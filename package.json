@@ -1,6 +1,6 @@
 {
-  "name": "my-app",
-  "version": "0.1.0",
+  "name": "To-Do",
+  "version": "0.0.1",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.12.3",
@@ -11,10 +11,13 @@
     "@types/node": "^16.7.1",
     "@types/react": "^17.0.19",
     "@types/react-dom": "^17.0.9",
+    "@types/react-redux": "^7.1.18",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "redux": "^4.1.1",
     "sass": "^1.38.0",
     "typescript": "^4.3.5",
     "web-vitals": "^1.0.1"
