@@ -1,0 +1,25 @@
+.container{
+  margin: 1rem;
+}
+
+.themeSun{
+  color: red;
+  cursor: pointer;
+}
+.themeMoon{
+  color: black;
+  cursor: pointer;
+}
+
+.list{
+  background-color: var(--bg-card);
+
+  .listItem{
+    border-bottom: 1px solid var(--txt-color);
+    background-clip: padding-box;
+  }
+
+  .listTxt{
+    color: var(--txt-color)
+  }
+}

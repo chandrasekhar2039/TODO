@@ -1,9 +1,11 @@
-
+import ApplyTheme from "./components/applyTheme";
+import './Styles/style.scss'
+import Main from "./components/main"
 function App() {
   return (
-    <div>
-      <h1>Hello</h1>
-    </div>
+    <ApplyTheme>
+    <Main/>
+  </ApplyTheme>
   );
 }
 

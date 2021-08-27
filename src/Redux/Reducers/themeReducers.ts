@@ -1,17 +1,22 @@
 import {dark,Light} from "../../Styles/theme";
 
-const init:object = dark;
+
+const init = {
+  value:dark,
+  toggel:true
+};
 
 
-const themeReducers = (state:object=init , { type })=>{
+const themeReducers = (state=init , { type })=>{
   switch(type){
     case "DARK":
-    return dark;
+    return {value:dark, toggel:false};
     case "LIGHT":
-    return Light
+    return {value:Light, toggel:true};
     default :
     return state
   }
 }
+
 
 export default themeReducers;
