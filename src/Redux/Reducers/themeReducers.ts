@@ -10,9 +10,9 @@ const init = {
 const themeReducers = (state=init , { type })=>{
   switch(type){
     case "DARK":
-    return {value:dark, toggel:false};
+    return {value:dark, toggel:true};
     case "LIGHT":
-    return {value:Light, toggel:true};
+    return {value:Light, toggel:false};
     default :
     return state
   }

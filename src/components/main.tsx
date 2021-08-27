@@ -27,7 +27,7 @@ var toggel = useSelector((state:RootState)=> state.Theme.toggel);
 
 
 var SwitchTheme=()=>{
-  if(toggel)
+  if(!toggel)
   dispatch(set_dark());
   else
   dispatch(set_light());
