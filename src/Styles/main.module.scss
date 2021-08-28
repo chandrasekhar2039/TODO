@@ -1,25 +1,103 @@
 .container{
-  margin: 1rem;
+  margin: 10px;
 }
 
-.themeSun{
-  color: red;
-  cursor: pointer;
+.heading{
+  margin: 3rem auto 1rem;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+
+  h1{
+    color: var(--txt-color-sec);
+    font-family: Roboto, sans-serif;
+  }
+
+  .themeSun{
+    color: white;
+    cursor: pointer;
+  }
+  .themeMoon{
+    color: black;
+    cursor: pointer;
+  }
 }
-.themeMoon{
-  color: black;
-  cursor: pointer;
-}
+
 
 .list{
   background-color: var(--bg-card);
+  min-width: 35vw;
+  max-width: 75vw;
+  border-radius: 5px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+
 
   .listItem{
     border-bottom: 1px solid var(--txt-color);
-    background-clip: padding-box;
+    padding: 10px 20px;
   }
 
   .listTxt{
-    color: var(--txt-color)
+    color: var(--txt-color);
+    padding: 10px 15px;
+    font-family: Josefin Sans, sans-serif;
+  }
+}
+
+.nav{
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  background-color: var(--bg-card);
+  color: var(--txt-color);
+  padding: 0 20px;
+
+p{
+  opacity: var(--opacity);
+  font-family: Josefin Sans, sans-serif;
+}
+
+  .navItem{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    p{
+      padding: 0 15px;
+      cursor: pointer;
+      opacity: 1;
+      font-family: Josefin Sans, sans-serif;
+    }
+  }
+}
+.navMob{
+background-color: var(--bg-card);
+padding: 0 20px;
+box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+
+  .navItemMob{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--txt-color);
+
+    p{
+      padding: 0 10px;
+      cursor: pointer;
+      font-family: Josefin Sans, sans-serif;
+    }
+  }
+}
+
+
+.footer{
+  color: var(--footer);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Josefin Sans, sans-serif;
+
+  a{
+    text-decoration: none;
+    color: var(--footer);
   }
 }

@@ -19,6 +19,7 @@ import {
 import WbSunnyIcon from '@material-ui/icons/WbSunny';
 import NightsStayIcon from '@material-ui/icons/NightsStay';
 
+import imgBack from "../Assets/img/background.jpg"
 
 
 const Main=()=>{
@@ -35,52 +36,84 @@ var SwitchTheme=()=>{
 }
 
   return(
+<>
+  <img src={imgBack} alt="background" className="wrapperBack"/>
+<div className="toplayer">
+  <Grid container direction="column" alignContent="center" spacing={1} >
 
-      <Grid container direction="column" alignContent="center" spacing={1}>
+    <div  className={styles.container}>
+      <div className={styles.heading}>
+        <h1> T O D O</h1>
+        <span hidden={!toggel} onClick={SwitchTheme}><WbSunnyIcon className={styles.themeSun} /></span>
+        <span hidden={toggel} onClick={SwitchTheme}><NightsStayIcon className={styles.themeMoon} /></span>
+      </div>
+    </div>
 
-        <div  className={styles.container}>
-          <h1> TODO</h1>
-          <span hidden={!toggel} onClick={SwitchTheme}><WbSunnyIcon className={styles.themeSun} /></span>
-          <span hidden={toggel} onClick={SwitchTheme}><NightsStayIcon className={styles.themeMoon} /></span>
+    <div  className={styles.container}>
+      <List className={styles.list} >
+        <ListItem className={styles.listItem}>
+            <Checkbox edge="start" className={styles.listcheck}  color="primary"/>
+            <ListItemText className={styles.listTxt}>Lorem ipsum dolor sit amet, commodo consequat.  </ListItemText>
+        </ListItem>
+
+        <ListItem className={styles.listItem}>
+            <Checkbox edge="start" className={styles.listcheck} color="primary"/>
+            <ListItemText className={styles.listTxt}>Todo list item two </ListItemText>
+        </ListItem>
+
+        <ListItem className={styles.listItem}>
+            <Checkbox edge="start" className={styles.listcheck} color="primary"/>
+            <ListItemText className={styles.listTxt}>Todo list item three </ListItemText>
+        </ListItem>
+
+        <ListItem className={styles.listItem}>
+            <Checkbox edge="start" className={styles.listcheck} color="primary"/>
+            <ListItemText className={styles.listTxt}>Todo list item four </ListItemText>
+        </ListItem>
+
+        <ListItem className={styles.listItem}>
+            <Checkbox edge="start" className={styles.listcheck} color="primary"/>
+            <ListItemText className={styles.listTxt}>Todo list item five </ListItemText>
+        </ListItem>
+
+        <ListItem className={styles.listItem}>
+            <Checkbox edge="start" className={styles.listcheck} color="primary"/>
+            <ListItemText className={styles.listTxt}>Todo list item six </ListItemText>
+        </ListItem>
+
+        <div className={styles.nav} >
+          <p> 5 items left</p>
+            <Hidden smDown>
+              <div className={styles.navItem}>
+                <p className="active"> All</p>
+                <p> Active</p>
+                <p> completed</p>
+              </div>
+            </Hidden>
+          <p className="cursor">clear completed</p>
         </div>
+      </List>
+    </div>
 
-        <div  className={styles.container}>
-          <List className={styles.list} >
-            <ListItem className={styles.listItem}>
-                <Checkbox edge="start" className={styles.listcheck}  color="primary"/>
-                <ListItemText className={styles.listTxt}>Todo list item one </ListItemText>
-            </ListItem>
+    <div className={styles.container}>
+      <div className={styles.navMob}>
+        <Hidden smUp>
+          <div className={styles.navItemMob}>
+            <p className="active"> All</p>
+            <p> Active</p>
+            <p> completed</p>
+          </div>
+        </Hidden>
+      </div>
+    </div>
 
-            <ListItem className={styles.listItem}>
-                <Checkbox edge="start" className={styles.listcheck} color="primary"/>
-                <ListItemText className={styles.listTxt}>Todo list item two </ListItemText>
-            </ListItem>
+    <div  className={styles.footer}>
+      <p>Made by <a href="https://www.instagram.com/developer_dev/?hl=en" target="_blank">Chandrasekhar </a></p>
+    </div>
 
-            <ListItem className={styles.listItem}>
-                <Checkbox edge="start" className={styles.listcheck} color="primary"/>
-                <ListItemText className={styles.listTxt}>Todo list item three </ListItemText>
-            </ListItem>
-
-            <ListItem className={styles.listItem}>
-                <Checkbox edge="start" className={styles.listcheck} color="primary"/>
-                <ListItemText className={styles.listTxt}>Todo list item four </ListItemText>
-            </ListItem>
-          </List>
-        </div>
-
-        <div  className={styles.container} >
-          <h1 > Hello from main</h1>
-        </div>
-
-        <div  className={styles.container}>
-          <h1 > Hello from main</h1>
-        </div>
-
-        <div  className={styles.container}>
-          <h1 > Hello from main</h1>
-        </div>
-
-    </Grid>
+</Grid>
+</div>
+</>
   )
 }
 
