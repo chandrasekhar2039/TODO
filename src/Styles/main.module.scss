@@ -23,6 +23,13 @@
   }
 }
 
+@media only screen and (max-width: 600px) {
+  .heading {
+    margin: 2rem auto 0rem;
+  }
+}
+
+
 
 .list{
   background-color: var(--bg-card);
