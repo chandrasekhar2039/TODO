@@ -18,6 +18,7 @@ import {
 
 import WbSunnyIcon from '@material-ui/icons/WbSunny';
 import NightsStayIcon from '@material-ui/icons/NightsStay';
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 
 import imgBack from "../Assets/img/background.jpg"
 
@@ -46,6 +47,13 @@ var SwitchTheme=()=>{
         <h1> T O D O</h1>
         <span hidden={!toggel} onClick={SwitchTheme}><WbSunnyIcon className={styles.themeSun} /></span>
         <span hidden={toggel} onClick={SwitchTheme}><NightsStayIcon className={styles.themeMoon} /></span>
+      </div>
+    </div>
+
+    <div  className={styles.container}>
+      <div className={styles.input}>
+        <AddCircleOutlineIcon className={styles.pen}/>
+        <input type="text" placeholder="Create a new todo ..."/>
       </div>
     </div>
 
@@ -97,7 +105,7 @@ var SwitchTheme=()=>{
 
     <div className={styles.container}>
       <div className={styles.navMob}>
-        <Hidden smUp>
+        <Hidden mdUp>
           <div className={styles.navItemMob}>
             <p className="active"> All</p>
             <p> Active</p>

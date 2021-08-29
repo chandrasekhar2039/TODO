@@ -1,32 +1,50 @@
 @import "variables";
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Roboto:wght@500&display=swap');
-html{
+
+html {
   background-color: var(--bg-color);
 }
 
-.wrapperBack{
-position: absolute;
-top: -100px;
-left: 0;
-z-index: -1;
-width: 100%;
-height: 45vh;
-opacity: 0.8;
+.wrapperBack {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 45vh;
+  opacity: 0.8;
 }
 
-.toplayer{
+.toplayer {
   z-index: 100;
 }
 
-.active{
+.active {
   color: var(--link-color);
 }
 
-.MuiIconButton-colorPrimary{
+
+.MuiIconButton-colorPrimary {
   color: var(--txt-color) !important;
   opacity: 0.5;
 }
 
-.cursor{
+.cursor {
   cursor: pointer;
+}
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: var(--txt-color);
+  /* Firefox */
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: var(--txt-color);
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: var(--txt-color);
 }
