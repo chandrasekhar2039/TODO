@@ -4,6 +4,14 @@
 html {
   background-color: var(--bg-color);
 }
+.toast{
+  background-color: var(--bg-color) !important;
+  color: var(--txt-color-sec) !important;
+
+  button{
+    color: var(--txt-color-sec) !important;
+  }
+}
 
 .wrapperBack {
   position: absolute;

@@ -37,6 +37,7 @@
   .pen {
     color: var(--txt-color);
     font-size: 26px;
+    cursor: pointer;
   }
 
   input {
@@ -57,17 +58,23 @@
   max-width: 75vw;
   border-radius: 5px;
   box-shadow: rgba(50, 50, 93, 0.25) 0 13px 27px -5px, rgba(0, 0, 0, 0.3) 0 8px 16px -8px;
+}
 
-  .listItem {
-    border-bottom: 1px solid var(--txt-color);
-    padding: 10px 20px;
-  }
+.listItem {
+  border-bottom: 1px solid var(--txt-color);
+  padding: 10px 20px;
+}
 
-  .listTxt {
-    color: var(--txt-color);
-    padding: 10px 15px;
-    font-family: Josefin Sans, sans-serif;
-  }
+.listTxt {
+  color: var(--txt-color);
+  padding: 10px 15px;
+  font-family: Josefin Sans, sans-serif;
+}
+.clear{
+  cursor: pointer;
+  display: none;
+  color: var(--txt-color);
+  opacity: 0.3;
 }
 
 .nav {
@@ -136,6 +143,12 @@
   .input {
     input {
       font-size: 16px;
+    }
+  }
+
+  .nav{
+    p{
+      font-size: 14px;
     }
   }
 }
