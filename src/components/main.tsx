@@ -22,7 +22,6 @@ import ClearIcon from '@material-ui/icons/Clear';
 import imgBack from "../Assets/img/background.jpg"
 
 
-
 const Main=()=>{
 var dispatch = useDispatch();
 var toggel = useSelector((state:RootState)=> state.Theme.toggel);
@@ -33,13 +32,14 @@ interface listType {
   completed:boolean
 }
 
+
 var get:string | null  = localStorage.getItem("list");
 var Data:listType[]
 var countleft:number
 if(get){
   Data = JSON.parse(get);
   countleft=0;
-  Data.map(each=>{
+  Data.forEach(each=>{
     !each.completed && countleft++;
   })
 }
@@ -48,8 +48,13 @@ else{
   countleft=0;
 }
 
+
+
 //hooks
 const [list, setlist] = React.useState(Data);
+const [active, setActive] =React.useState(false);
+const [completed, setCompleted] =React.useState(false);
+const [All, setAll] = React.useState(true);
 
 // theme toggle
 var SwitchTheme=()=>{
@@ -65,7 +70,7 @@ var handelInput =(e:any)=>{
     let input = document.querySelector <HTMLInputElement>("#input")!.value;
     document.querySelector <HTMLInputElement>("#input")!.value="";
     if(input === '')
-    return toast.error('Empty Task', {
+    return toast.error('No Task Entered', {
           position: "top-right",
           autoClose: 3000,
           hideProgressBar: false,
@@ -86,44 +91,61 @@ var handelInput =(e:any)=>{
   }
 }
 
-var deleteTask=()=>{
-  alert("delete");
-
+var deleteTask=(id:string)=>{
+  var newDel = Data.filter(each => each.id !== id)
+save(newDel);
 }
 
 
-var handelDone =()=>{
-  alert("i m done");
-
+var handelDone =(id:string)=>{
+var checkedData = Data.map(each=>{
+  if(each.id === id)
+  each.completed=!each.completed
+  return each
+})
+save(checkedData);
 }
 
 var showAll=()=>{
-  alert("all");
+  setAll(true);
+  setActive(false);
+  setCompleted(false);
 }
 
 var showACtive=()=>{
-  alert("ative");
+  setAll(false);
+  setActive(true);
+  setCompleted(false);
 }
 
 var showDone=()=>{
-  alert("done all");
+  setAll(false);
+  setActive(false);
+  setCompleted(true);
 }
 
 var clearDone=()=>{
-  alert(" all clear");
+var allClear = Data.filter(each => !each.completed);
+save(allClear);
 }
 
 
 
 
-
-
-
-
-var save=(Data)=>{
+var save=(Data:listType[])=>{
   localStorage.setItem("list", JSON.stringify(Data));
   setlist([...Data]);
 }
+
+var ItemProp =({each})=>{
+  return <ListItem className={styles.listItem}>
+      <Checkbox edge="start" className={styles.listcheck} color="primary" checked={each.completed}  onChange={()=> handelDone(each.id)} />
+      <ListItemText hidden={each.completed} className={styles.listTxt}>{each.task}</ListItemText>
+      <ListItemText hidden={!each.completed} className={styles.listTxtDone}>{each.task}</ListItemText>
+      <ClearIcon className={styles.clear} onClick={()=> deleteTask(each.id)}/>
+  </ListItem>
+}
+
 
 
   return(
@@ -131,7 +153,6 @@ var save=(Data)=>{
   <img src={imgBack} alt="background" className="wrapperBack"/>
 <div className="toplayer">
   <Grid container direction="column" alignContent="center" spacing={1} >
-
     <div  className={styles.container}>
       <div className={styles.heading}>
         <h1> T O D O</h1>
@@ -143,8 +164,9 @@ var save=(Data)=>{
     <div  className={styles.container}>
       <div className={styles.input}>
         <AddCircleOutlineIcon className={styles.pen} onClick={handelInput} />
-        <input type="text" placeholder="Create a new todo ..." id="input" onKeyDown={handelInput} autoComplete="off" />
+        <input type="text" placeholder="Create a new todo ..." id="input" onKeyDown={handelInput} autoComplete="off" autoFocus />
       </div>
+
     </div>
 
     <div  className={styles.container}>
@@ -153,25 +175,27 @@ var save=(Data)=>{
         {
           list.length > 0
            ? list.map((each)=>{
-              return <ListItem className={styles.listItem} key={each.id}>
-                  <Checkbox edge="start" className={styles.listcheck} color="primary" defaultChecked={each.completed}  onChange={handelDone} />
-                  <ListItemText className={styles.listTxt}>{each.task}</ListItemText>
-                  <ClearIcon className={styles.clear} onClick={deleteTask}/>
-              </ListItem>
+             if(active && !each.completed)
+              return <ItemProp each={each} key={each.id} />
+              if(completed && each.completed)
+              return <ItemProp each={each} key={each.id} />
+              if(All)
+              return <ItemProp each={each} key={each.id} />
+              return null
             })
              :
              <ListItem>
-                 <ListItemText className={styles.listTxt}>No Task available</ListItemText>
+                 <ListItemText className={styles.listTxt}> No Task available</ListItemText>
              </ListItem>
         }
 
         {list.length > 0 && <div className={styles.nav} >
-          <p> {countleft} items left</p>
+          <p> {countleft} task left</p>
             <Hidden smDown>
               <div className={styles.navItem}>
-                <p className="active" onClick={showAll}> All</p>
-                <p onClick={showACtive}> Active</p>
-                <p onClick={showDone}> completed</p>
+                <p className={All ? `active` : ''} onClick={showAll}> All</p>
+                <p className={active ? `active` : ''} onClick={showACtive}> Active</p>
+                <p className={completed ? `active` : ''} onClick={showDone}> completed</p>
               </div>
             </Hidden>
           <p className="cursor" onClick={clearDone}>clear completed</p>
@@ -183,9 +207,9 @@ var save=(Data)=>{
       <div className={styles.navMob}>
         <Hidden mdUp>
           <div className={styles.navItemMob}>
-            <p className="active" onClick={showAll}> All</p>
-            <p onClick={showACtive}> Active</p>
-            <p onClick={showDone}> completed</p>
+            <p className={All ? `active` : ''} onClick={showAll}> All</p>
+            <p className={active ? `active` : ''} onClick={showACtive}> Active</p>
+            <p className={completed ? `active` : ''} onClick={showDone}> completed</p>
           </div>
         </Hidden>
       </div>
