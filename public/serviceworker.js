@@ -22,7 +22,7 @@ self.addEventListener("install", e=>{
       return cache.addAll(static_url);
     })
     .catch(err=>{
-      // console.log("Installing SW failed !", err);
+      console.log("Installing SW failed !", err);
       // fail silently
     })
   )
@@ -30,6 +30,10 @@ self.addEventListener("install", e=>{
 
 // fetch request
 self.addEventListener("fetch", e=>{
+  // check if request is made by chrome extensions or web page
+  // if request is made for web page url must contains http.
+  // skip the request. if request is not made with http protocol
+  if (!(e.request.url.indexOf('http') === 0)) return;
   e.respondWith(
     caches.match(e.request)
     .then(respond=>{
