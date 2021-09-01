@@ -1,0 +1,32 @@
+{
+  "short_name": "T O D O",
+  "name": "My T O D O",
+  "icons": [
+    {
+      "src": "/Favicons/android-chrome-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/Favicons/android-chrome-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "/Favicons/apple-touch-icon.png",
+      "type": "image/png",
+      "sizes": "180x180"
+    },
+    {
+      "src": "/Favicons/favicon.ico",
+      "type": "image/x-icon",
+      "sizes": "48x48"
+    }
+  ],
+  "start_url": ".",
+  "background_color": "#161620",
+  "display": "standalone",
+  "theme_color": "#25273c",
+  "description": "TODO Task"
+}
