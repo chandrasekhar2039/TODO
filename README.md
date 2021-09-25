@@ -20,15 +20,15 @@ Supports dark and light mode.
 
 ## Mobile View
 <div align="center">
-<img src="./MarkdownAssets/images/Mobile%20version.gif" alt="Mobile View" width="200"/>
+<img src="./MarkdownAssets/images/Mobile%20Version.gif" alt="Mobile View" width="200"/>
 <p>Supports almost all mobile devices</p>
 </div>
 
 ## Theme Change
-![Theme](./MarkdownAssets/images/mode.gif)
+![Theme](./MarkdownAssets/images/Mode.gif)
 
 <p align="center">
-Supports `dark` and `light` theme.
+Supports dark and light theme.
 </p>
 
 ## 🛠 Installation & Set Up
