@@ -52,3 +52,8 @@ Supports dark and light mode.
    | Han Purple   | ![#3E00FF](https://via.placeholder.com/10/3E00FF?text=+) `#3E00FF` |
    | Black  | ![#100303](https://via.placeholder.com/10/100303?text=+) `#100303` |
    | White   | ![#fffefe](https://via.placeholder.com/10/fffefe?text=+) `#fffefe` |
+
+ ## license
+<a href="./LICENSE">
+<img src="https://img.shields.io/github/license/chandrasekhar2039/TODO" alt="MIT license" />
+</a>
