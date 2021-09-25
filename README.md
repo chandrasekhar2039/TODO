@@ -18,6 +18,19 @@
 A Web-App that manages day to day tasks, in a simple and efficient manner. It's responsive, fast and works offline.
 Supports dark and light mode.
 
+## Mobile View
+<div align="center">
+<img src="./MarkdownAssets/images/Mobile%20version.gif" alt="Mobile View" width="200"/>
+<p>Supports almost all mobile devices</p>
+</div>
+
+## Theme Change
+![Theme](./MarkdownAssets/images/mode.gif)
+
+<p align="center">
+Supports `dark` and `light` theme.
+</p>
+
 ## 🛠 Installation & Set Up
 
 1. Fork this repo
