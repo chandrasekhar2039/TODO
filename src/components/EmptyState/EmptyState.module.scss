@@ -1,5 +1,14 @@
+.emptyItem {
+  min-height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .listTxt {
   color: var(--txt-color);
-  padding: 10px 15px;
+  padding: 10px 20px;
   font-family: Josefin Sans, sans-serif;
+  text-align: center;
+  opacity: var(--opacity);
 }

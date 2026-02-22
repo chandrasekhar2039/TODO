@@ -1,6 +1,7 @@
 .listItem {
   border-bottom: 1px solid var(--txt-color);
   padding: 10px 20px;
+  align-items: flex-start;
 
   &:hover .clear {
     display: block;
@@ -11,6 +12,10 @@
   color: var(--txt-color);
   padding: 10px 15px;
   font-family: Josefin Sans, sans-serif;
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .listTxtDone {
@@ -19,6 +24,10 @@
   font-family: Josefin Sans, sans-serif;
   text-decoration: line-through;
   opacity: 0.7;
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .clear {

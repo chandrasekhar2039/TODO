@@ -35,7 +35,7 @@ const FilterNav: React.FC<FilterNavProps> = ({ isMobile = false }) => {
             />
             <FilterButton
               filter="completed"
-              label="completed"
+              label="Completed"
               isActive={filter === 'completed'}
               onClick={() => setFilter('completed')}
             />
@@ -64,7 +64,7 @@ const FilterNav: React.FC<FilterNavProps> = ({ isMobile = false }) => {
           />
           <FilterButton
             filter="completed"
-            label="completed"
+            label="Completed"
             isActive={filter === 'completed'}
             onClick={() => setFilter('completed')}
           />

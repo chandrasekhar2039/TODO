@@ -10,6 +10,7 @@ const TodoList: React.FC = () => {
   const filter = useTodoStore((state) => state.filter);
 
   const filteredTodos = useMemo(() => filterTodos(todos, filter), [todos, filter]);
+  const isEmpty = filteredTodos.length === 0;
 
   const todoItems = useMemo(() => {
     return filteredTodos.map((todo) => (
@@ -19,7 +20,7 @@ const TodoList: React.FC = () => {
 
   return (
     <List className={styles.list}>
-      {todos.length > 0 ? todoItems : <EmptyState />}
+      {isEmpty ? <EmptyState filter={filter} hasTodos={todos.length > 0} /> : todoItems}
     </List>
   );
 };

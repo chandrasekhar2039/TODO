@@ -16,6 +16,17 @@ html {
   background-color: var(--bg-color);
 }
 
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+}
+
 .toast {
   background-color: var(--bg-color) !important;
   color: var(--txt-color-sec) !important;

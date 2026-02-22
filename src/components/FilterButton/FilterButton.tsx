@@ -11,7 +11,7 @@ interface FilterButtonProps {
 
 const FilterButton: React.FC<FilterButtonProps> = ({ label, isActive, onClick }) => {
   return (
-    <p className={isActive ? 'active' : ''} onClick={onClick}>
+    <p className={`${styles.button} ${isActive ? 'active' : ''}`} onClick={onClick}>
       {label}
     </p>
   );
