@@ -25,8 +25,10 @@ const Main: React.FC = () => {
           </div>
 
           <div className={styles.container}>
-            <TodoList />
-            {todos.length > 0 && <FilterNav />}
+            <div className={styles.todoSection}>
+              <TodoList />
+              {todos.length > 0 && <FilterNav />}
+            </div>
           </div>
 
           {todos.length > 0 && (

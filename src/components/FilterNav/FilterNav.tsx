@@ -13,7 +13,6 @@ const FilterNav: React.FC<FilterNavProps> = ({ isMobile = false }) => {
   const setFilter = useTodoStore((state) => state.setFilter);
   const getActiveCount = useTodoStore((state) => state.getActiveCount);
   const clearCompleted = useTodoStore((state) => state.clearCompleted);
-  const todos = useTodoStore((state) => state.todos);
 
   const activeCount = getActiveCount();
 

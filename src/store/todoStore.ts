@@ -3,6 +3,17 @@ import { Todo, FilterType } from '../types/todo';
 import { getTodosFromStorage, saveTodosToStorage } from '../utils/storage';
 import { saveTodosToIndexedDB, syncWithLocalStorage } from '../utils/indexedDB';
 
+export const filterTodos = (todos: Todo[], filter: FilterType): Todo[] => {
+  switch (filter) {
+    case 'active':
+      return todos.filter((todo) => !todo.completed);
+    case 'completed':
+      return todos.filter((todo) => todo.completed);
+    default:
+      return todos;
+  }
+};
+
 interface TodoStore {
   todos: Todo[];
   filter: FilterType;
@@ -11,7 +22,6 @@ interface TodoStore {
   toggleTodo: (id: string) => void;
   clearCompleted: () => void;
   setFilter: (filter: FilterType) => void;
-  getFilteredTodos: () => Todo[];
   getActiveCount: () => number;
 }
 
@@ -81,18 +91,6 @@ export const useTodoStore = create<TodoStore>((set, get) => {
 
     setFilter: (filter: FilterType) => {
       set({ filter });
-    },
-
-    getFilteredTodos: () => {
-      const { todos, filter } = get();
-      switch (filter) {
-        case 'active':
-          return todos.filter((todo) => !todo.completed);
-        case 'completed':
-          return todos.filter((todo) => todo.completed);
-        default:
-          return todos;
-      }
     },
 
     getActiveCount: () => {
