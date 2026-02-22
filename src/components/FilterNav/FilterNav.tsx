@@ -1,5 +1,4 @@
 import React from 'react';
-import { Hidden } from '@mui/material';
 import { useTodoStore } from '../../store/todoStore';
 import FilterButton from '../FilterButton/FilterButton';
 import styles from './FilterNav.module.scss';
@@ -19,37 +18,7 @@ const FilterNav: React.FC<FilterNavProps> = ({ isMobile = false }) => {
   if (isMobile) {
     return (
       <div className={styles.navMob}>
-        <Hidden mdUp>
-          <div className={styles.navItemMob}>
-            <FilterButton
-              filter="all"
-              label="All"
-              isActive={filter === 'all'}
-              onClick={() => setFilter('all')}
-            />
-            <FilterButton
-              filter="active"
-              label="Active"
-              isActive={filter === 'active'}
-              onClick={() => setFilter('active')}
-            />
-            <FilterButton
-              filter="completed"
-              label="Completed"
-              isActive={filter === 'completed'}
-              onClick={() => setFilter('completed')}
-            />
-          </div>
-        </Hidden>
-      </div>
-    );
-  }
-
-  return (
-    <div className={styles.nav}>
-      <p>{activeCount} task left</p>
-      <Hidden smDown>
-        <div className={styles.navItem}>
+        <div className={styles.navItemMob}>
           <FilterButton
             filter="all"
             label="All"
@@ -69,7 +38,33 @@ const FilterNav: React.FC<FilterNavProps> = ({ isMobile = false }) => {
             onClick={() => setFilter('completed')}
           />
         </div>
-      </Hidden>
+      </div>
+    );
+  }
+
+  return (
+    <div className={styles.nav}>
+      <p>{activeCount} task left</p>
+      <div className={styles.navItem}>
+        <FilterButton
+          filter="all"
+          label="All"
+          isActive={filter === 'all'}
+          onClick={() => setFilter('all')}
+        />
+        <FilterButton
+          filter="active"
+          label="Active"
+          isActive={filter === 'active'}
+          onClick={() => setFilter('active')}
+        />
+        <FilterButton
+          filter="completed"
+          label="Completed"
+          isActive={filter === 'completed'}
+          onClick={() => setFilter('completed')}
+        />
+      </div>
       <p className="cursor" onClick={clearCompleted}>
         clear completed
       </p>

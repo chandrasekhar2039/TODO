@@ -1,5 +1,7 @@
 import React from 'react';
 import { Grid } from '@mui/material';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme as useMuiTheme } from '@mui/material/styles';
 import BackgroundImage from './BackgroundImage/BackgroundImage';
 import TodoHeader from './TodoHeader/TodoHeader';
 import TodoInput from './TodoInput/TodoInput';
@@ -10,6 +12,8 @@ import styles from './main.module.scss';
 
 const Main: React.FC = () => {
   const todos = useTodoStore((state) => state.todos);
+  const muiTheme = useMuiTheme();
+  const isMobile = useMediaQuery(muiTheme.breakpoints.down('sm'));
 
   return (
     <>
@@ -27,11 +31,11 @@ const Main: React.FC = () => {
           <div className={styles.container}>
             <div className={styles.todoSection}>
               <TodoList />
-              {todos.length > 0 && <FilterNav />}
+              {todos.length > 0 && !isMobile && <FilterNav />}
             </div>
           </div>
 
-          {todos.length > 0 && (
+          {todos.length > 0 && isMobile && (
             <div className={styles.container}>
               <FilterNav isMobile />
             </div>
