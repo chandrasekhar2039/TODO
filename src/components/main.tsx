@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid } from '@mui/material';
+import { Grid2 } from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme as useMuiTheme } from '@mui/material/styles';
 import BackgroundImage from './BackgroundImage/BackgroundImage';
@@ -19,7 +19,7 @@ const Main: React.FC = () => {
     <>
       <BackgroundImage />
       <div className={styles.toplayer}>
-        <Grid container direction="column" alignContent="center" spacing={1}>
+        <Grid2 container direction="column" alignContent="center" spacing={1}>
           <div className={styles.container}>
             <TodoHeader />
           </div>
@@ -29,10 +29,8 @@ const Main: React.FC = () => {
           </div>
 
           <div className={styles.container}>
-            <div className={styles.todoSection}>
-              <TodoList />
-              {todos.length > 0 && !isMobile && <FilterNav />}
-            </div>
+            <TodoList />
+            {todos.length > 0 && !isMobile && <FilterNav />}
           </div>
 
           {todos.length > 0 && isMobile && (
@@ -53,7 +51,7 @@ const Main: React.FC = () => {
               </a>
             </p>
           </div>
-        </Grid>
+        </Grid2>
       </div>
     </>
   );

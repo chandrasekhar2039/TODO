@@ -1,6 +1,6 @@
 .wrapper {
   min-width: 35vw;
-  max-width: 75vw;
+  max-width: 50vw;
 }
 
 .input {
@@ -42,8 +42,8 @@
 
 @media only screen and (max-width: 600px) {
   .wrapper {
-    min-width: 75vw;
-    max-width: 90vw;
+    max-width: 85vw;
+    min-width: 85vw;
   }
 
   .input {
