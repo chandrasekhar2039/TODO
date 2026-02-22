@@ -1,14 +1,16 @@
 /// <reference lib="webworker" />
 /* eslint-disable no-restricted-globals */
 
-
 import { clientsClaim } from 'workbox-core';
 import { ExpirationPlugin } from 'workbox-expiration';
 import { precacheAndRoute, createHandlerBoundToURL } from 'workbox-precaching';
 import { registerRoute } from 'workbox-routing';
-import { StaleWhileRevalidate } from 'workbox-strategies';
+import { StaleWhileRevalidate, CacheFirst } from 'workbox-strategies';
 
 declare const self: ServiceWorkerGlobalScope;
+
+const CACHE_VERSION = 'v1';
+const CACHE_NAME = `todo-app-${CACHE_VERSION}`;
 
 clientsClaim();
 
@@ -41,20 +43,61 @@ registerRoute(
   createHandlerBoundToURL(process.env.PUBLIC_URL + '/index.html')
 );
 
-// An example runtime caching route for requests that aren't handled by the
-// precache, in this case same-origin .png requests like those from in public/
+// Cache images with stale-while-revalidate strategy
 registerRoute(
-  // Add in any other file extensions or routing criteria as needed.
-  ({ url }) => url.origin === self.location.origin && (url.pathname.endsWith('.png') || url.pathname.endsWith('.jpg') || url.pathname.endsWith('.ico')),
-  // Customize this strategy as needed, e.g., by changing to CacheFirst.
+  ({ url }) =>
+    url.origin === self.location.origin &&
+    (url.pathname.endsWith('.png') ||
+      url.pathname.endsWith('.jpg') ||
+      url.pathname.endsWith('.jpeg') ||
+      url.pathname.endsWith('.webp') ||
+      url.pathname.endsWith('.ico') ||
+      url.pathname.endsWith('.svg')),
   new StaleWhileRevalidate({
-    cacheName: 'dyanamic-images',
+    cacheName: 'images',
     plugins: [
-      // Ensure that once this runtime cache reaches a maximum size the
-      new ExpirationPlugin({ maxEntries: 50 }),
+      new ExpirationPlugin({
+        maxEntries: 50,
+        maxAgeSeconds: 30 * 24 * 60 * 60, // 30 days
+      }),
     ],
   })
 );
+
+// Cache fonts with cache-first strategy
+registerRoute(
+  ({ url }) =>
+    url.origin === 'https://fonts.googleapis.com' ||
+    url.origin === 'https://fonts.gstatic.com',
+  new CacheFirst({
+    cacheName: 'fonts',
+    plugins: [
+      new ExpirationPlugin({
+        maxEntries: 30,
+        maxAgeSeconds: 365 * 24 * 60 * 60, // 1 year
+      }),
+    ],
+  })
+);
+
+// Clean up old caches on activation
+self.addEventListener('activate', (event) => {
+  event.waitUntil(
+    caches.keys().then((cacheNames) => {
+      return Promise.all(
+        cacheNames
+          .filter((cacheName) => {
+            return (
+              cacheName.startsWith('todo-app-') && cacheName !== CACHE_NAME
+            );
+          })
+          .map((cacheName) => {
+            return caches.delete(cacheName);
+          })
+      );
+    })
+  );
+});
 
 // This allows the web app to trigger skipWaiting via
 self.addEventListener('message', (event) => {

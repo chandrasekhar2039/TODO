@@ -1,0 +1,43 @@
+.listItem {
+  border-bottom: 1px solid var(--txt-color);
+  padding: 10px 20px;
+  align-items: flex-start;
+
+  &:hover .clear {
+    display: block;
+  }
+}
+
+.listTxt {
+  color: var(--txt-color);
+  padding: 10px 15px;
+  font-family: Josefin Sans, sans-serif;
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.listTxtDone {
+  color: var(--txt-color);
+  padding: 10px 15px;
+  font-family: Josefin Sans, sans-serif;
+  text-decoration: line-through;
+  opacity: 0.7;
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.clear {
+  cursor: pointer;
+  display: none;
+  color: var(--txt-color);
+  opacity: 0.3;
+}
+
+.listcheck {
+  color: var(--txt-color) !important;
+  opacity: 0.5;
+}

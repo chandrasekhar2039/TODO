@@ -1,0 +1,54 @@
+.wrapper {
+  min-width: 35vw;
+  max-width: 75vw;
+}
+
+.input {
+  background-color: var(--bg-card);
+  border-radius: 5px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0 13px 27px -5px, rgba(0, 0, 0, 0.3) 0 8px 16px -8px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+
+  .pen {
+    color: var(--txt-color);
+    font-size: 26px;
+    cursor: pointer;
+  }
+
+  input {
+    background-color: var(--bg-card);
+    border: none;
+    outline: none;
+    color: var(--txt-color);
+    font-size: 20px;
+    font-family: Josefin Sans, sans-serif;
+    margin: 0 0 0 20px;
+    width: 85%;
+  }
+}
+
+.errorMsg {
+  margin: 8px 4px 0;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: color-mix(in srgb, #ff4d4f 14%, var(--bg-card));
+  color: var(--txt-color);
+  font-family: Josefin Sans, sans-serif;
+  font-size: 14px;
+  border: 1px solid color-mix(in srgb, #ff4d4f 40%, transparent);
+}
+
+@media only screen and (max-width: 600px) {
+  .wrapper {
+    min-width: 75vw;
+    max-width: 90vw;
+  }
+
+  .input {
+    input {
+      font-size: 16px;
+    }
+  }
+}

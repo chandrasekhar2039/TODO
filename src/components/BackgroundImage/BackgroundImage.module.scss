@@ -1,0 +1,14 @@
+.wrapperBack {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 45vh;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  
+  &.loaded {
+    opacity: 0.8;
+  }
+}
