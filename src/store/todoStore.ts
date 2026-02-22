@@ -5,6 +5,11 @@ import { saveTodosToIndexedDB, syncWithLocalStorage } from '../utils/indexedDB';
 
 export const filterTodos = (todos: Todo[], filter: FilterType): Todo[] => {
   switch (filter) {
+    case 'all': {
+      const activeTodos = todos.filter((todo) => !todo.completed);
+      const completedTodos = todos.filter((todo) => todo.completed);
+      return [...activeTodos, ...completedTodos];
+    }
     case 'active':
       return todos.filter((todo) => !todo.completed);
     case 'completed':

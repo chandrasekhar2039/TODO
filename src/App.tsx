@@ -1,9 +1,6 @@
 import React, { Suspense } from "react";
 import './Styles/global.scss'
 
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
 import ErrorBoundary from "./ErrorBoundaries"
 import { useTheme } from "./hooks/useTheme";
 
@@ -19,7 +16,6 @@ function App() {
     <Suspense fallback={<div className="loader">Loading...</div>}>
       <ErrorBoundary>
         <ThemeProvider>
-          <ToastContainer toastClassName="toast" />
           <Main/>
         </ThemeProvider>
       </ErrorBoundary>

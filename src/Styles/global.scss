@@ -27,15 +27,6 @@ body {
   overflow: hidden;
 }
 
-.toast {
-  background-color: var(--bg-color) !important;
-  color: var(--txt-color-sec) !important;
-
-  button {
-    color: var(--txt-color-sec) !important;
-  }
-}
-
 .wrapperBack {
   position: absolute;
   top: -100px;

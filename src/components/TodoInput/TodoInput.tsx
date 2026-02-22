@@ -1,12 +1,12 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
-import { toast } from 'react-toastify';
 import { useTodoStore } from '../../store/todoStore';
 import { sanitizeInput, capitalizeFirst } from '../../utils/sanitize';
 import styles from './TodoInput.module.scss';
 
 const TodoInput: React.FC = () => {
   const inputRef = useRef<HTMLInputElement>(null);
+  const [error, setError] = useState('');
   const addTodo = useTodoStore((state) => state.addTodo);
 
   const handleInput = (e: React.KeyboardEvent<HTMLInputElement> | React.MouseEvent) => {
@@ -18,15 +18,7 @@ const TodoInput: React.FC = () => {
     const sanitized = sanitizeInput(input);
     
     if (!sanitized) {
-      toast.error('No Task Entered', {
-        position: 'top-right',
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
+      setError('Enter a task before adding.');
       return;
     }
 
@@ -34,21 +26,32 @@ const TodoInput: React.FC = () => {
       inputRef.current.value = '';
     }
 
+    setError('');
     const capitalized = capitalizeFirst(sanitized);
     addTodo(capitalized);
   };
 
   return (
-    <div className={styles.input}>
-      <AddCircleOutlineIcon className={styles.pen} onClick={handleInput} />
-      <input
-        ref={inputRef}
-        type="text"
-        placeholder="Create a new todo ..."
-        onKeyDown={handleInput}
-        autoComplete="off"
-        autoFocus
-      />
+    <div className={styles.wrapper}>
+      <div className={styles.input}>
+        <AddCircleOutlineIcon className={styles.pen} onClick={handleInput} />
+        <input
+          ref={inputRef}
+          type="text"
+          placeholder="Create a new todo ..."
+          onKeyDown={handleInput}
+          onChange={() => {
+            if (error) setError('');
+          }}
+          autoComplete="off"
+          autoFocus
+        />
+      </div>
+      {error && (
+        <p role="alert" className={styles.errorMsg}>
+          {error}
+        </p>
+      )}
     </div>
   );
 };
