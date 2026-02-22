@@ -19,9 +19,12 @@ const TodoList: React.FC = () => {
   }, [filteredTodos]);
 
   return (
-    <List className={styles.list}>
-      {isEmpty ? <EmptyState filter={filter} hasTodos={todos.length > 0} /> : todoItems}
-    </List>
+    <div className={styles.todoSection}>
+      <List className={styles.list}>
+        {isEmpty ? <EmptyState filter={filter} hasTodos={todos.length > 0} /> : todoItems}
+      </List>
+    </div>
+
   );
 };
 
