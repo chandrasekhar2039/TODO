@@ -1,14 +1,26 @@
 @import "variables";
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Roboto:wght@500&display=swap');
 
+/* Font optimization */
+@font-face {
+  font-family: 'Josefin Sans';
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-display: swap;
+}
+
 html {
   background-color: var(--bg-color);
 }
-.toast{
+
+.toast {
   background-color: var(--bg-color) !important;
   color: var(--txt-color-sec) !important;
 
-  button{
+  button {
     color: var(--txt-color-sec) !important;
   }
 }
@@ -30,7 +42,6 @@ html {
 .active {
   color: var(--link-color);
 }
-
 
 .MuiIconButton-colorPrimary {
   color: var(--txt-color) !important;
@@ -56,7 +67,6 @@ html {
   /* Microsoft Edge */
   color: var(--txt-color);
 }
-
 
 //loader
 .loader,
@@ -118,7 +128,7 @@ html {
 }
 
 //for ErrorBoundary
-.error{
+.error {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -126,25 +136,25 @@ html {
   margin-top: 35vh;
   color: var(--txt-color-sec);
   font-family: Roboto, sans-serif;
-  h1{
+  h1 {
     font-size: 3rem;
   }
-  strong{
+  strong {
     color: yellow;
     font-weight: 200;
   }
-  a{
+  a {
     color: yellow;
     text-decoration: none;
   }
 }
 @media only screen and (max-width: 600px) {
-  .error{
+  .error {
     padding: 3vw;
-    h1{
+    h1 {
       font-size: 1.6rem;
     }
-    p{
+    p {
       font-size: 14px;
     }
   }

@@ -1,0 +1,17 @@
+.heading {
+  margin: 10vh auto 1rem;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+
+  h1 {
+    color: var(--txt-color-sec);
+    font-family: Roboto, sans-serif;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .heading {
+    margin: 8vh auto 0;
+  }
+}

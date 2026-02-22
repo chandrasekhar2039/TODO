@@ -25,9 +25,9 @@ class ErrorBoundary extends Component<Props, State> {
   public render() {
     if (this.state.hasError) {
       return <div className="error">
-                <h1>Something went wrong ! 🙁</h1>
-                <p>Make sure you have a stable internet connection then <strong>Try reloading the Page .</strong><br/> If the problem still persists <i><a href="mailto:chandrasekhar.2039@gmail.com">Conatct here.</a></i></p>
-            </div>;
+        <h1>Something went wrong ! 🙁</h1>
+        <p>Make sure you have a stable internet connection then <strong>Try reloading the Page .</strong><br /> If the problem still persists <i><a href="mailto:chandrasekhar.2039@gmail.com">Conatct here.</a></i></p>
+      </div>;
     }
 
     return this.props.children;
